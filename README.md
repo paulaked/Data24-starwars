@@ -1,5 +1,7 @@
 # Data 24 Star Wars Project
 
+Jira: Kanban Board: https://spartaglobal.atlassian.net/jira/software/projects/NSP/boards/298
+
 ## Instructions
 
 The character data in your MongoDB database has been pulled from https://swapi.dev/.
