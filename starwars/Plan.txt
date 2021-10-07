@@ -1,0 +1,2 @@
+Create a function which retrieves information from database
+create a function which takes in 3 arguments: [database, collection, attribute]

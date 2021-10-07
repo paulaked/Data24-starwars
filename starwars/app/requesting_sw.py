@@ -1,6 +1,8 @@
 import starwars.config_manager as conf
 import requests
+import json
+from pprint import pprint
 
-sw = requests.get(conf.SWAPI_URL)
-
-print(sw)
+starships = requests.get(conf.SWAPI_URL+"/api/starships")
+starships_list = starships.json()["results"]
+# pprint(starships_list)
