@@ -1,6 +1,7 @@
 from definitions import PROJECT_ROOT_DIR
 import configparser
 import os
+import pytest
 
 _config = configparser.ConfigParser()
 

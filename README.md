@@ -1,5 +1,21 @@
 # Data 24 Star Wars Project
 
+## Links
+
+Trello board: 
+https://trello.com/invite/b/wu28Ecub/5f4b291ad0d1f8352adc1a201a543e32/data24-starwars-ahmedreman
+
+My Git Branch:
+https://github.com/paulaked/Data24-starwars/tree/AhmedReman
+
+## Basic Coding Requirements
+
+- Pull data on all available starships
+- Using the "pilots" field, join every starship with the character who pilots it (set the value of the pilots field to the characters id)
+- Instead of referencing the pilot character in the Starship collection, create a Characters collection and embed the Starship to the character that pilots it
+
+
+
 ## Instructions
 
 The character data in your MongoDB database has been pulled from https://swapi.dev/.
