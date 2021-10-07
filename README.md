@@ -2,7 +2,7 @@
 
 ## Kanban Board
 
-https://trello.com/b/INKA6vLF/data24starwarsboardtia
+https://trello.com/invite/b/INKA6vLF/9d5d6a5c4ffd9dfd514d591a870bdbf1/data24starwarsboardtia
 
 ## Instructions
 
