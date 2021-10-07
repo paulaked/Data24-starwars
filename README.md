@@ -1,5 +1,7 @@
 # Data 24 Star Wars Project
 
+Trello board link - https://trello.com/b/a4U79EyZ/project
+
 ## Instructions
 
 The character data in your MongoDB database has been pulled from https://swapi.dev/.
