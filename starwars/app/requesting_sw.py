@@ -9,4 +9,6 @@ trial_API.populate_all_ships()
 trial_API.populate_piloted_ships()
 
 for ship in trial_API.get_piloted_ships:
-    print(ship["pilots"])
+    print(ship["name"])
+    for i in ship["pilots"]:
+        print(i)
