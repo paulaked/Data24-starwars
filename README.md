@@ -1,5 +1,9 @@
 # Data 24 Star Wars Project
 
+## Kanban Board
+
+https://trello.com/b/INKA6vLF/data24starwarsboardtia
+
 ## Instructions
 
 The character data in your MongoDB database has been pulled from https://swapi.dev/.
