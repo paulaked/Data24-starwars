@@ -1,19 +1,12 @@
 import starwars.config_manager as conf
 
+import API_Pulling as pulling
 import requests
-import ast                          # Decoding the byte pulled from the API
 
+trial_API = pulling.ShipInfo()
 
-sw = requests.get(conf.SWAPI_URL + "/people/1")
+trial_API.populate_all_ships()
+trial_API.populate_piloted_ships()
 
-i = 1
-
-while i <= 10:
-    sw = requests.get(conf.SWAPI_URL + "/starships/" + str(i))
-    sw_content = sw.content
-    sw_data = ast.literal_eval(sw_content.decode("UTF-8"))
-    if "detail" not in sw_data:
-        print(sw_data)
-    else:
-        print("not found")
-    i += 1
+for ship in trial_API.get_piloted_ships:
+    print(ship["pilots"])
