@@ -17,7 +17,7 @@ def get_starship(starship_id):
 
 
 def get_character(character_id):
-    return _get(settings.PEOPLE, character_id)
+    return _get(settings.CHARACTER, character_id)
 
 
 def get_all(resource_type):

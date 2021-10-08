@@ -8,7 +8,7 @@ sw = requests.get(conf.SWAPI_URL)
 
 
 # x = requests.get(f'{conf.SWAPI_URL}/starships/2?format=json')
-# x = requests.get(f'{conf.SWAPI_URL}/starships/2').json()
+x = requests.get(f'{conf.SWAPI_URL}/starships/2').json()
 # pprint(x)
 # print(x['name'])
 

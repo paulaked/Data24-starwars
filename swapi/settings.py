@@ -5,7 +5,7 @@ They should be treated as constants and should not be modified
 """
 
 BASE_URL = "https://swapi.dev/api"
-PEOPLE = 'people'
+CHARACTER = 'people'
 STARSHIPS = 'starships'
 
 """

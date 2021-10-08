@@ -2,7 +2,7 @@ from swapi import swapi as api
 
 
 def test_get():
-    assert api._get(api.settings.PEOPLE, 1)['name'] == "Luke Skywalker"
+    assert api._get(api.settings.CHARACTER, 1)['name'] == "Luke Skywalker"
     assert api._get(api.settings.STARSHIPS, 10)['name'] == "Millennium Falcon"
 
 
@@ -15,4 +15,4 @@ def test_get_character():
 
 
 def test_get_all():
-    assert len(api.get_all(api.settings.PEOPLE)) == 82
+    assert len(api.get_all(api.settings.CHARACTER)) == 82
