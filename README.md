@@ -9,7 +9,8 @@ My Git Branch:
 https://github.com/paulaked/Data24-starwars/tree/AhmedReman
 
 Design Documents:
-https://drive.google.com/drive/folders/1GKX-8H1RHt7L2D3LKy-of00Idv7Y0_IH?usp=sharing
+The design documents can be found in the following directory:
+/docs/design
 
 ## Basic Coding Requirements
 
