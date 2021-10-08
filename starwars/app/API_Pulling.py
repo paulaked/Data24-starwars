@@ -13,6 +13,9 @@ class ShipInfo:
         self.__piloted_ships = []
         self.__ship_count = self.pull_ship_count()
 
+        self.populate_all_ships()
+        self.populate_piloted_ships()
+
 # Getters for class properties
 
     @property

@@ -2,15 +2,28 @@ import pymongo
 import pprint
 import requests
 
-import API_Pulling as pulling
+import starwars.app.API_Pulling as pulling
 
 
 class PilotInteraction:
     def __init__(self):
-        self.__db = None
-        self.__ship_pilot_url_dict = {}
-        self.__ship_pilot_name_dict = {}
-        self.__ship_pilot_object_id_dict = {}
+        self.__db = self.set_up_mongo("starwars")
+        self.__ships_api = pulling.ShipInfo()
+        self.__ship_pilot_url_dict = self.create_ship_pilot_url_dict(self.get_api)
+        self.__ship_pilot_name_dict = self.create_ship_pilot_name_dict(self.get_url_dict)
+        self.__ship_pilot_object_id_dict = self.create_ship_pilot_objectID_dict(self.get_name_dict, self.get_db)
+        print(f"name dict: {self.__ship_pilot_name_dict}")
+        print(f"Also should be name dict: {self.get_name_dict}")
+
+
+
+    @property
+    def get_db(self):
+        return self.__db
+
+    @property
+    def get_api(self):
+        return self.__ships_api
 
     @property
     def get_url_dict(self) -> dict:
@@ -34,7 +47,7 @@ class PilotInteraction:
         self.__ship_pilot_object_id_dict = dictionary
 
     @staticmethod
-    def pull_single_pilot(url:str) -> dict or str:
+    def pull_single_pilot(url: str) -> dict or str:
         first_pull = requests.get(url)
         dictionary = first_pull.json()
         if "name" not in dictionary:
@@ -81,14 +94,13 @@ class PilotInteraction:
                     object_id_dict[key].append(str(j)[8::][:-1])
         return object_id_dict
 
-    ships_API = pulling.ShipInfo()
-    set_up_ship(ships_API)
+    
+    print(f"Also also should be name dict: {get_name_dict}")
 
-    db = set_up_mongo("starwars")
-    set_url_dict(create_ship_pilot_url_dict(ships_API))
-    set_name_dict(create_ship_pilot_name_dict(get_url_dict))
-    set_object_dict(create_ship_pilot_objectID_dict(get_name_dict, db))
-
-    print(get_object_dict)
-
-    # Try and get this working in a class
+Testing_Pilot = PilotInteraction()
+name_dict = PilotInteraction.get_name_dict
+url_dict = PilotInteraction.get_url_dict
+id_dict = PilotInteraction.get_object_dict
+pprint.pprint(f"name dict: {name_dict}")
+pprint.pprint(f"url dict: {url_dict}")
+pprint.pprint(f"id_dict: {id_dict}")
