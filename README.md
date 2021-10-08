@@ -8,11 +8,13 @@ https://trello.com/invite/b/wu28Ecub/5f4b291ad0d1f8352adc1a201a543e32/data24-sta
 My Git Branch:
 https://github.com/paulaked/Data24-starwars/tree/AhmedReman
 
+Design Documents:
+https://drive.google.com/drive/folders/1GKX-8H1RHt7L2D3LKy-of00Idv7Y0_IH?usp=sharing
+
 ## Basic Coding Requirements
 
 - Pull data on all available starships
 - Using the "pilots" field, join every starship with the character who pilots it (set the value of the pilots field to the characters id)
-- Instead of referencing the pilot character in the Starship collection, create a Characters collection and embed the Starship to the character that pilots it
 
 
 
