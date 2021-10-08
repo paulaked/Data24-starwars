@@ -47,11 +47,11 @@ def dictionary_of_ships_with_pilots_URL():
 
 
 def generate_txt_file_with_data(input):
-    data = open("data.json", "w")
+    data = open(r"C:\Users\Sully\Documents\SpartaGlobal\NoSQL\Data24-starwars\starwars\app\data.json", "w")
     json.dump(input, data)
 
 
-file = open("data.json", "r")
+file = open(r"C:\Users\Sully\Documents\SpartaGlobal\NoSQL\Data24-starwars\starwars\app\data.json", "r")
 data_file = file.readlines()
 
 
@@ -75,11 +75,13 @@ def requests_data_from_pilots_url():  # returns a dict of 'pilot urls' : 'pilot 
 
 
 def generate_txt_file_with_pilots_url(input):
-    pilots_url_data = open("pilots_urls.json", "w")
+    pilots_url_data = open(r"C:\Users\Sully\Documents\SpartaGlobal\NoSQL\Data24-starwars\starwars\app\pilots_urls.json",
+                           "w")
     json.dump(input, pilots_url_data)
 
 
-pilot_file = open("pilots_urls.json", "r")  # Opens the pilots_urls file essentially to run times quicker.
+pilot_file = open(r"C:\Users\Sully\Documents\SpartaGlobal\NoSQL\Data24-starwars\starwars\app\pilots_urls.json",
+                  "r")  # Opens the pilots_urls file essentially to run times quicker.
 pilots_urls = pilot_file.readlines()
 
 
@@ -89,45 +91,23 @@ def converting_pilots_to_dict():  # returns a dictionary of 'name of ship' : 'pi
         return pilot_conversion
 
 
-
 print(1)
+
+print(converting_pilots_to_dict())
 # ----- working here.----------------------- # keys: converting_to_dict()[urls]
 
-for values in converting_pilots_to_dict():
-    pass
-shipname_pilotname = {}
-for keys in converting_shipnames_to_dict():
-    for values in converting_pilots_to_dict():
-        if converting_shipnames_to_dict()[keys] == values:
-            print("okay")
-        else:
-            print("no")
-# for keys in converting_shipnames_to_dict():
-#     print(converting_shipnames_to_dict()[keys])
-#     for values in converting_pilots_to_dict():
-#         print(values)
-# print(converting_pilots_to_dict().keys())
-# print(converting_shipnames_to_dict().values())
-
-
-# for urls in converting_shipnames_to_dict():
-#     for keys in converting_pilots_to_dict().keys():
-#         if keys == converting_shipnames_to_dict()[urls]:
-#             shipname_pilotname[keys] = converting_shipnames_to_dict().keys()
-# print(requests_data_from_pilots_url().values())
-# print(converting_to_dict().keys())
-
-
-
 def combine_shipname_pilotname():
-    pass
-# ------------------------------------ Need to call the function if you get new data ----------------------
+    shipname_pilotname = {}
+    for keys in converting_shipnames_to_dict():  # Keys are the ship name
+        shipname_pilotname[keys] = []
+        for urls in converting_shipnames_to_dict()[keys]:  # urls are pilot urls
+            for values in converting_pilots_to_dict():
+                if urls == values:
+                    shipname_pilotname[keys].append(converting_pilots_to_dict()[values])
+    return shipname_pilotname
 
-# generate_txt_file_with_data(dictionary_of_ships_with_pilots_URL())
 
+print(combine_shipname_pilotname())
 
-# ------------------------------------ Need to call the function if you get new data ----------------------
-
-# generate_txt_file_with_pilots_url(requests_data_from_pilots_url())
 file.close()
 pilot_file.close()
