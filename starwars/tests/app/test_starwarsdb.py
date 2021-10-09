@@ -32,3 +32,12 @@ def test_update():
     # Verify document has been updated
     check = characters.find_one({"_id": ins_id}, {})
     assert check["height"] == 160
+
+
+# Cleanup
+client.drop_database(client[name])
+
+"""
+test_database_name_valid
+test_database_name_invalid
+"""

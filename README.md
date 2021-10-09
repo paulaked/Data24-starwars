@@ -11,6 +11,7 @@ https://github.com/paulaked/Data24-starwars/tree/AhmedReman
 Design Documents:
 The design documents can be found in the following directory:
 /docs/design
+Design files can be viewed via: https://app.diagrams.net/
 
 ## Basic Coding Requirements
 
