@@ -1,4 +1,4 @@
-
+import app.mongoIntegrator as moi
 
 test_text= "\"Differences of habit and language are nothing at all if our " \
            "aims are identical and our hearts are open\" \n Albus Dumbledore, " \
@@ -6,4 +6,4 @@ test_text= "\"Differences of habit and language are nothing at all if our " \
 
 
 if __name__ == '__main__':
-    print(test_text)
+    moi.run_app()
