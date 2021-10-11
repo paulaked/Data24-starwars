@@ -24,3 +24,4 @@ def test_get_id():
 def test_replace_apis_with_ids():
     assert ReplaceAPIsWithIDs.replace_apis_with_ids({"pilots": []}, ["1", "2", "3"]) ==\
            {"pilots": ["1", "2", "3"]}
+
