@@ -4,7 +4,7 @@ import starwars.app.Pilot_Interaction as pilot
 import starwars.app.Mongo_Interaction as mongo
 
 import requests
-import pymongo
+
 
 db_name = "starwars"
 collection_name = "starships"
@@ -64,24 +64,25 @@ def test_second_dictionary():
 def test_third_dictionary():
     test_dict_three = test_pilot_holder.get_object_dict
     test_list_three = list(test_dict_three.values())
-    assert type(test_list_three[0][0]) == str
+    assert type(test_list_three[0][0]) == str and test_list_three[0][0].startswith("ObjectId('")
 
 
 test_mongo_file = mongo.Mongo(db_name)
 
 
 def test_key_puller():
-    keylist = test_mongo_file.get_ship_keys
-    assert type(keylist) == list and type(keylist[0]) == str
+    key_list = test_mongo_file.get_ship_keys
+    assert type(key_list) == list and type(key_list[0]) == str
 
 
+def test_pilot_replacer():
+    testing_ship_list = test_mongo_file.get_update_list
+    testing_ship = testing_ship_list[0]
+    assert testing_ship["pilots"][0].startswith("ObjectId('")
 
 
-
-
-
-
-
-
-
-
+def test_making_collection():
+    test_mongo_file.make_collection("Testing_DB")
+    list_of_collections = test_mongo_file.get_db.list_collection_names()
+    assert "Testing_DB" in list_of_collections
+    test_mongo_file.get_db.Testing_DB.drop()
