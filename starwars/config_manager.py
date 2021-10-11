@@ -7,3 +7,4 @@ _config = configparser.ConfigParser()
 _config.read(os.path.join(PROJECT_ROOT_DIR, 'config.ini'))
 
 SWAPI_URL = _config['default']['url']
+MONGO_URL = _config['default']['mongo_str']

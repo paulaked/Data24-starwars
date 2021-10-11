@@ -3,19 +3,16 @@ import pprint
 import requests
 
 import starwars.app.API_Pulling as pulling
+import starwars.config_manager as conf
 
 
 class PilotInteraction:
-    def __init__(self):
-        self.__db = self.set_up_mongo("starwars")
+    def __init__(self, db_name: str):
+        self.__db = self.set_up_mongo(db_name)
         self.__ships_api = pulling.ShipInfo()
         self.__ship_pilot_url_dict = self.create_ship_pilot_url_dict(self.get_api)
         self.__ship_pilot_name_dict = self.create_ship_pilot_name_dict(self.get_url_dict)
         self.__ship_pilot_object_id_dict = self.create_ship_pilot_objectID_dict(self.get_name_dict, self.get_db)
-        print(f"name dict: {self.__ship_pilot_name_dict}")
-        print(f"Also should be name dict: {self.get_name_dict}")
-
-
 
     @property
     def get_db(self):
@@ -55,12 +52,14 @@ class PilotInteraction:
         else:
             return dictionary
 
-    def set_up_ship(self, ship_API):
+    @staticmethod
+    def set_up_ship(ship_API):
         ship_API.populate_all_ships()
         ship_API.populate_piloted_ships()
 
-    def set_up_mongo(self, database: str):
-        client = pymongo.MongoClient("mongodb://localhost:27017/")
+    @staticmethod
+    def set_up_mongo(database: str):
+        client = pymongo.MongoClient(conf.MONGO_URL)
         db = client[database]
         return db
 
@@ -72,7 +71,6 @@ class PilotInteraction:
             for i in ship["pilots"]:
                 piloted_ship_dict_url[ship['name']].append(i)
         return piloted_ship_dict_url
-
 
     def create_ship_pilot_name_dict(self, url_dict: dict):
         piloted_ship_dict_name = {}
@@ -93,14 +91,3 @@ class PilotInteraction:
                 for j in holding_cursor:
                     object_id_dict[key].append(str(j)[8::][:-1])
         return object_id_dict
-
-    
-    print(f"Also also should be name dict: {get_name_dict}")
-
-Testing_Pilot = PilotInteraction()
-name_dict = PilotInteraction.get_name_dict
-url_dict = PilotInteraction.get_url_dict
-id_dict = PilotInteraction.get_object_dict
-pprint.pprint(f"name dict: {name_dict}")
-pprint.pprint(f"url dict: {url_dict}")
-pprint.pprint(f"id_dict: {id_dict}")

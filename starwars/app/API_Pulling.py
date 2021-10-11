@@ -1,21 +1,19 @@
 import starwars.config_manager as conf
 
 import requests
-import pprint
-
 import ast                          # Decoding the byte pulled from the API
-import json                         # json and ast set up for greater flexibility
 
 
 class ShipInfo:
     def __init__(self):
         self.__all_ships = []
         self.__piloted_ships = []
+        self.__non_piloted_ships = []
         self.__ship_count = self.pull_ship_count()
 
         self.populate_all_ships()
         self.populate_piloted_ships()
-
+        self.populate_non_piloted_ships()
 # Getters for class properties
 
     @property
@@ -25,6 +23,10 @@ class ShipInfo:
     @property
     def get_piloted_ships(self):
         return self.__piloted_ships
+
+    @property
+    def get_non_piloted_ships(self):
+        return self.__non_piloted_ships
 
     @property
     def get_ship_count(self):
@@ -37,8 +39,10 @@ class ShipInfo:
         self.__all_ships = self.pull_all_ships()
 
     def populate_piloted_ships(self):
-        self.__piloted_ships = self.pull_piloted_ships(self.get_all_ships)
+        self.__piloted_ships = self.pull_piloted_ships(self.get_all_ships)[0]
 
+    def populate_non_piloted_ships(self):
+        self.__non_piloted_ships = self.pull_piloted_ships(self.get_all_ships)[1]
 # Static Methods
 
     @staticmethod
@@ -61,7 +65,7 @@ class ShipInfo:
                 piloted_list.append(ship)
             else:
                 unpiloted_list.append(ship)
-        return piloted_list
+        return [piloted_list, unpiloted_list]
 
 # Dynamic Methods
 
