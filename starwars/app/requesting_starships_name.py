@@ -1,6 +1,14 @@
 import starwars.config_manager as conf
 import requests
 
+"""
+This function iterates through the starships in the API and returns their name
+It takes into account the multiple pages to return a full list 
+
+It iterates through the starships on the first page and returns all their names, once it has finished on the first page
+it moves onto the next one and continues this process until it reaches a page where the 'next' value is 'null' 
+"""
+
 
 def go_through_starships(api_link):
     response = requests.get(api_link)
