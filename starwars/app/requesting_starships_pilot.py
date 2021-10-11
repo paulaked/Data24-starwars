@@ -22,7 +22,7 @@ def go_through_starships_name_pilots(api_link):
             yield page
 
 
-list_of_starships = go_through_starships_name_pilots(conf.SWAPI_STARSHIPS_URL)
-for ship in list_of_starships:
+list_of_starships_and_pilots = go_through_starships_name_pilots(conf.SWAPI_STARSHIPS_URL)
+for ship in list_of_starships_and_pilots:
     print(ship)
 
