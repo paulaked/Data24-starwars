@@ -2,5 +2,5 @@ import starwars.config_manager as conf
 import requests
 
 sw = requests.get(conf.SWAPI_URL)
-
-print(sw)
+star_wars_data = sw.json()
+print(star_wars_data)
