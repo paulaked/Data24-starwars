@@ -18,7 +18,7 @@ def get_request(URL: str):
     if starwars_Data:
         return starwars_Data
     else:
-        # if starwars data is not exist, return False
+        # if starwars data does not exist, return False
         return False
 
 
