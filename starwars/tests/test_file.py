@@ -15,26 +15,28 @@ def test_if_dictionary():
     assert type(rqst.converting_ship_names_to_dict()) == dict
 
 
-# def test_check_if_all_ships_present():
-#     assert
-
 def test_number_of_pilots():
     assert rqst.combine_ship_name_pilot_name()["TIE Advanced x1"] == ["Darth Vader"]
 
 
-# Need to test the length of the ouput expecting 36?
+# Need to test the length of the output expecting 36?
+
 def test_if_combined_list_is_correct_length():
     assert len(rqst.combine_ship_name_pilot_name()) == 36
 
 
 # Check to see if pilot is in dictionary.
+
 def test_ship_doesnt_have_pilot():
     assert rqst.combine_ship_name_pilot_name()["Death Star"] == []
 
+
 # Check to see correct objectId for a given pilot.
+
 def test_ship_name_pilot_id():
     assert rqst.complete_ship_information_with_pilot_ids()['TIE Advanced x1']['pilots'] \
-                                                                == ["ObjectID:615d754d6d19bc77fdfda7a9"]
+           == ["ObjectID:615d754d6d19bc77fdfda7a9"]
+
 
 # Check to see when multiple pilots fly one star ship that the correct number of objects id's are produced.
 

@@ -3,13 +3,12 @@ import requests
 import json
 import pymongo
 from pprint import pprint
-from collections import ChainMap
 
 client = pymongo.MongoClient()
 db = client['starwars']
 
 
-#               This is here to correctly run a test.
+# This is here to run a test.
 
 def requests_data_from_url():
     for num in range(1, 5):
@@ -17,7 +16,7 @@ def requests_data_from_url():
         return sw
 
 
-#  Pulls all of the ships and their information from the SWAPI.
+#  Function pulls all of ship information from the SWAPI.
 
 def list_of_all_ships():
     sw_data = []
@@ -48,9 +47,9 @@ def dictionary_of_ships_with_pilots_URL():
     return dict_of_ships_and_pilots
 
 
-# print(dictionary_of_ships_with_pilots_URL())
+# Following functions are responsible for making and transforming .json files into usable formats.
+#                                                       3 .json files were created. 1 was made redundant.
 
-# Created a txt file as SWAPI was slow so this increased the speed of the queries.
 def generate_txt_file_with_data(input):
     data = open(r"C:\Users\Sully\Documents\SpartaGlobal\NoSQL\Data24-starwars\starwars\app\data.json", "w")
     json.dump(input, data)
@@ -109,7 +108,7 @@ def converting_pilots_to_dict():  # returns a dictionary of 'name of ship' : 'pi
         return pilot_conversion
 
 
-# ----- working here.----------------------- # keys: converting_to_dict()[urls]
+# These functions produces a dictionary of ship names and pilot names. Was made redundant  after refactoring.
 
 def combine_ship_name_pilot_name():  # ship names with pilot names
     shipname_pilotname = {}
@@ -121,6 +120,9 @@ def combine_ship_name_pilot_name():  # ship names with pilot names
                     shipname_pilotname[keys].append(converting_pilots_to_dict()[values])
     return shipname_pilotname
 
+
+# Function first replaces pilot urls into names and then uses those names to look up objects
+#                                                          and replaces pilot names with objectIDs.
 
 def complete_ship_information_with_pilot_ids():
     ships_information = {}
@@ -137,11 +139,15 @@ def complete_ship_information_with_pilot_ids():
     return ships_information
 
 
+# Function inserts a document into the starships collection.
+
 def insert_into_mongo():
     for keys in complete_ship_information_with_pilot_ids():
         insert = db.starships.insert_one(complete_ship_information_with_pilot_ids()[keys])
         return insert
 
+
+# These are required to close all of the files.
 
 file.close()
 pilot_file.close()
