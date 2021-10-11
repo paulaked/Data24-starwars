@@ -1,4 +1,3 @@
-import starwars.config_manager as conf
 import requests
 import json
 
@@ -7,11 +6,11 @@ import json
 # Catches 2 errors: ConnectionError & JSONDecodeError
 # Returns False if fail
 # Returns JSON file is success
-def get_request():
+def get_request(URL: str):
     starwars_Data = None
     try:
         # convert to JSON file
-        starwars_Data = requests.get(f'{conf.SWAPI_URL}/api/starships', headers={'content-type': 'application/json'}).json()
+        starwars_Data = requests.get(URL, headers={'content-type': 'application/json'}).json()
     except requests.exceptions.ConnectionError as CE:
         print(CE)
     except json.decoder.JSONDecodeError as JSONError:
@@ -19,6 +18,7 @@ def get_request():
     if starwars_Data:
         return starwars_Data
     else:
+        # if starwars data is not exist, return False
         return False
 
 
