@@ -28,17 +28,17 @@ it moves onto the next one and continues this process until it reaches a page wh
 """
 
 
-def go_through_people(api_link):
+def go_through_people_name(api_link):
     response = requests.get(api_link)
     people_result = response.json()
     for character in people_result['results']:
         yield character['name']
     if 'next' in people_result and people_result['next'] is not None:
-        next_page = go_through_people(people_result['next'])
+        next_page = go_through_people_name(people_result['next'])
         for page in next_page:
             yield page
 
 
-list_of_people = go_through_people(conf.SWAPI_PEOPLE_URL)
+list_of_people = go_through_people_name(conf.SWAPI_PEOPLE_URL)
 for people in list_of_people:
     print(people)
