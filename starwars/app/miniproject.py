@@ -3,6 +3,7 @@ import requests
 import pymongo
 
 
+# Function to get back a list of ObjectIDs for each URL
 def add_to_list_of_ids(list_of_pilot_urls, list_of_pilot_ids, db):
     for pilot_url in list_of_pilot_urls:                            # Goes through the list of pilot URLs
         pilot_info_request = requests.get(pilot_url).json()         # Gets the json of the pilot from the API
@@ -17,7 +18,7 @@ def add_to_list_of_ids(list_of_pilot_urls, list_of_pilot_ids, db):
 
 def make_starship_dicts():
     highest_page_number = 75  # Change this to the highest page
-    list_of_starship_dictionaries = []
+    list_of_starship_dictionaries = []  # Empty variable that will be returned from this function
 
     client = pymongo.MongoClient()  # Opens our pymongo server and assigns it to variable client
     db = client['starwars']  # Assigns the 'starwars' database to the variable db
@@ -38,6 +39,7 @@ def make_starship_dicts():
         except KeyError:
             list_of_pilot_urls = starship_req["pilots"]  # Find the list of pilots who pilot that starship
 
+            # Calling this function to get back a list of IDs for each URL
             list_of_pilot_ids = add_to_list_of_ids(list_of_pilot_urls, list_of_pilot_ids, db)
 
             starship_req["pilots"] = list_of_pilot_ids            # Sets the 'pilots' entry in the starship JSON to
