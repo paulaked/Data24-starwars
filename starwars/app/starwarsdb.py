@@ -34,12 +34,3 @@ class StarWarsDB:
     def update(self, collection, where, data):
         return self.__collections[collection].update_one(where, {"$set": data})
 
-
-# # Inline tests - REMOVE
-db = StarWarsDB(db_name="StarWarsTemp")
-# id = db.insert(COLLECTIONS.CHARACTERS, {'name': 'Adam'})
-# print(db.characters.find_one({"_id": id}))
-#
-# up = db.update(COLLECTIONS.CHARACTERS, {"_id": id}, {'name': 'Bob'})
-# # up = db.characters.update_one({"_id": id}, {"$set": { 'name': "Bob" }})
-# print(db.characters.find_one({"_id": id}))
