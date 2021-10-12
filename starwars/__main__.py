@@ -19,5 +19,5 @@ if __name__ == '__main__':
 
     # Making and populating the collection:
     mongo.make_collection(collection_name)
-    mongo.populate_collection(db_name)
+    mongo.populate_collection(collection_name)
     print("Process complete")

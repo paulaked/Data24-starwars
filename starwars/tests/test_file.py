@@ -86,3 +86,9 @@ def test_making_collection():
     list_of_collections = test_mongo_file.get_db.list_collection_names()
     assert "Testing_DB" in list_of_collections
     test_mongo_file.get_db.Testing_DB.drop()
+
+#
+# def test_adding_one():
+#     test_mongo_file.insert_in_single_data("Testing_DB", "{'test': 'testing', 'tester': 'tested'}")
+#     assert test_mongo_file.get_db.Testing_DB.find({}, {"test": 1, "_id": 0}) == "testing"
+#     test_mongo_file.get_db.Testing_DB.drop()
