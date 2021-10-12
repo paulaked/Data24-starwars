@@ -1,6 +1,5 @@
-
 from file1 import *
-from bson import ObjectId
+from bson import ObjectId  # Used to test if the correct inputs are collected from StarWars database.
 
 
 def test_starships_name():
