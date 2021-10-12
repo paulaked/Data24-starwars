@@ -16,3 +16,8 @@ Design files can be viewed via: https://app.diagrams.net/
 ## Program
 This program runs by executing the __main__.py script found in the following directory:
 starwars/__main__.py
+
+For this program to run, a MongoDB service must be running on your local computer.
+
+## Setup
+You can specify the database name in the configuration file (root/config.ini). The default database name is "AhmedsStarWarsDB".
