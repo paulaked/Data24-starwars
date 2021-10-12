@@ -31,3 +31,16 @@ def get_all(resource_type):
         url = response['next']  # The next request to make (next page)
 
     return all_response
+
+
+def extract_from_url(url):
+    return requests.get(url).json()
+
+
+def extract_from_urls(urls):
+    response = list()
+
+    for url in urls:
+        response.append(extract_from_url(url))
+
+    return response

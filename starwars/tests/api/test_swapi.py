@@ -16,3 +16,14 @@ def test_get_character():
 
 def test_get_all():
     assert len(api.get_all(api.settings.CHARACTER)) == 82
+
+
+def test_extract_from_url():
+    character = api.extract_from_url(url="https://swapi.dev/api/people/15")
+    assert character['name'] == "Greedo"
+
+
+def test_extract_from_urls():
+    urls = ["https://swapi.dev/api/people/5", "https://swapi.dev/api/starships/9"]
+    names_returned = [c['name'] for c in api.extract_from_urls(urls)]  # Capture the 'name' field from returned list
+    assert all(name in names_returned for name in ["Leia Organa", "Death Star"])

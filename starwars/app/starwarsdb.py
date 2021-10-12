@@ -20,9 +20,6 @@ class StarWarsDB:
         if overwrite:
             self.__client.drop_database(self.__db)
 
-        # REMOVE
-        self.characters = self.__collections['Characters']
-
     @property
     def database_name(self):
         # return self.__db._Database__name
@@ -39,7 +36,7 @@ class StarWarsDB:
 
 
 # # Inline tests - REMOVE
-# db = StarWarsDB(db_name="StarWarsTemp")
+db = StarWarsDB(db_name="StarWarsTemp")
 # id = db.insert(COLLECTIONS.CHARACTERS, {'name': 'Adam'})
 # print(db.characters.find_one({"_id": id}))
 #
