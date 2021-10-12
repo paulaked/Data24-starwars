@@ -1,5 +1,6 @@
 
 from file1 import *
+from bson import ObjectId
 
 
 def test_starships_name():
@@ -15,8 +16,18 @@ def test_pilot_names():
 
 
 def test_pilot_object_ids():
-    assert get_pilot_object_ids(10) == ['615e9e15458d51eeea1431e9',
-                                        '615e9e200e1c7d4e755766d2',
-                                        '615e9e27e643b2379ddc2b8a',
-                                        '615e9e2cfc8b367d393967b0']
+    assert get_pilot_object_ids(10) == [ObjectId('61648c1de2b4c67b016f2b51'),
+                                        ObjectId('61648c287fe84354f27559a2'),
+                                        ObjectId('61648c2ff5d2d6fc8683b6d6'),
+                                        ObjectId('61648c347109080275dec2e7')]
 
+
+def test_check_collection():
+    assert check_collection('StarWars',
+                            'starships',
+                            'Millennium Falcon'
+                            ) == {'pilots': [ObjectId('61648c1de2b4c67b016f2b51'),
+                                             ObjectId('61648c287fe84354f27559a2'),
+                                             ObjectId('61648c2ff5d2d6fc8683b6d6'),
+                                             ObjectId('61648c347109080275dec2e7')],
+                                  'starship': 'Millennium Falcon'}

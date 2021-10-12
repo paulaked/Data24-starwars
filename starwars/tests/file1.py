@@ -23,12 +23,18 @@ def secondary_number_list(pg_num: int, cat: str, secondary_key_name: str):
 
 def get_pilot(pg_num: int):
 
-    pilot_number_list = secondary_number_list(pg_num, 'starships', 'pilots')
+    pilot_number_list = secondary_number_list(pg_num,
+                                              'starships',
+                                              'pilots'
+                                              )
     pilots = []
 
     for i in pilot_number_list:
 
-        pilots.append(get_info(i, 'name', 'people'))
+        pilots.append(get_info(i,
+                               'name',
+                               'people')
+                      )
 
     return pilots
 
@@ -39,20 +45,48 @@ def get_pilot_object_ids(pg_num: int):
     db = client["StarWars"]
 
     pilot_list = get_pilot(pg_num)
-    p_id_list = []
     pilot_id_list = []
 
     for i in pilot_list:
 
-        character_id = db.characters.find_one({"name": i}, {"_id": 1})
-        char_id_num = str(character_id["_id"])
+        character_id = db.characters.find_one({"name": i},
+                                              {"_id": 1}
+                                              )
+
+        char_id_num = character_id["_id"]
         pilot_id_list.append(char_id_num)
 
     return pilot_id_list
 
 
-#
-# list = get_info(10,'pilots','starships')
-# print(list[0].split('/')[5].strip())
-# print(secondary_number_list(10,'starships','pilots'))
-print(get_pilot_object_ids(10))
+def create_collection(database: str, collection_name: str):
+
+    client = pymongo.MongoClient()
+    db = client[database]
+    db.create_collection(collection_name)
+
+
+def add_starship_document(database: str, collection: str, name: str, pilots_list: list):
+
+    client = pymongo.MongoClient()
+    db = client[database]
+    insert = db.get_collection(collection)
+    insert.insert_one(
+        {"starship": name,
+         "pilots": pilots_list
+         })
+
+
+def check_collection(database: str, collection: str, starship_name: str):
+
+    client = pymongo.MongoClient()
+    db = client[database]
+    det_ = db.get_collection(collection).find(
+        {"starship": starship_name}, {'pilots': 1, 'starship': 1, '_id': 0}
+        )
+
+    for item in det_:
+        return item
+
+
+
